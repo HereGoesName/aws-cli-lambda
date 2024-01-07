@@ -23,7 +23,7 @@ virtualenv -p python3 ${VIRTUAL_ENV_DIR}
 cd ${VIRTUAL_ENV_DIR}/bin/
 
 # Activate virtual environment
-source activate
+source ./activate
 
 # Installs AWS CLI and its dependencies
 pip install awscli
@@ -47,6 +47,7 @@ cd ${LAMBDA_LAYER_DIR}
 # Copies aws and its dependencies to the temp directory
 cp ../${VIRTUAL_ENV_DIR}/bin/aws .
 cp -r ../${VIRTUAL_ENV_DIR}/lib/python${PYTHON_VERSION}/site-packages/* .
+cp -r ../${VIRTUAL_ENV_DIR}/lib64/python${PYTHON_VERSION}/site-packages/* .
 
 # Zips the contents of the temporary directory
 zip -r ../${ZIP_FILE_NAME} *
